@@ -1,0 +1,23 @@
+[
+  {
+    "id": "library-entrance",
+    "name": "Library Entrance",
+    "lat": 37.7751,
+    "lng": -122.4187,
+    "photo": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "science-building",
+    "name": "Science Building Courtyard",
+    "lat": 37.7746,
+    "lng": -122.4198,
+    "photo": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    "id": "cafeteria",
+    "name": "Main Cafeteria",
+    "lat": 37.7754,
+    "lng": -122.4204,
+    "photo": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80"
+  }
+]
