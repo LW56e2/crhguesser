@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Guesser</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel photo-panel">
+        <h1>Campus Guesser</h1>
+        <p>Guess where this photo was taken on your school map.</p>
+        <img id="round-photo" src="" alt="Current round photo" />
+        <div class="actions">
+          <button id="submit-guess" disabled>Submit guess</button>
+          <button id="next-round">Next round</button>
+        </div>
+        <p id="result"></p>
+      </section>
+      <section class="panel map-panel">
+        <div id="map"></div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
