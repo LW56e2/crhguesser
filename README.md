@@ -5,10 +5,6 @@ This is a simple GeoGuessr-style web app for school campuses:
 - Frontend: Vanilla JavaScript + Leaflet map.
 - Data model: list of `{id, name, photo, lat, lng}` entries in `data/locations.json`.
 
-## Why this stack
-- You are comfortable with Flask, so keep backend simple and Pythonic.
-- Frontend logic is small; vanilla JS avoids framework overhead.
-- Leaflet + OpenStreetMap gives free map interactivity.
 
 ## MVP flow
 1. Frontend requests `GET /api/round`.
