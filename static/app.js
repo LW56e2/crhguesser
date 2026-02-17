@@ -14,7 +14,6 @@ const resultNode = document.getElementById("result");
 const submitButton = document.getElementById("submit-guess");
 const nextRoundButton = document.getElementById("next-round");
 const roundPhoto = document.getElementById("round-photo");
-const mapNode = document.getElementById("map");
 const mapPanel = document.getElementById("map-panel");
 const openMapButton = document.getElementById("open-map");
 const closeMapButton = document.getElementById("close-map");
@@ -76,7 +75,7 @@ async function loadRound() {
   selectedLatLng = null;
   hideMapUntilOpened();
 
-  photoZoomInput.value = "2.4";
+  photoZoomInput.value = "1";
   photoPanXInput.value = "50";
   photoPanYInput.value = "50";
   updatePhotoFraming();
