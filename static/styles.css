@@ -1,59 +1,79 @@
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   font-family: Inter, Arial, sans-serif;
 }
 
+html,
 body {
   margin: 0;
-  background: #f8fafc;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #020617;
+  color: #e2e8f0;
 }
 
 .layout {
   display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 16px;
-  padding: 16px;
-  min-height: 100vh;
+  grid-template-columns: 1fr;
+  padding: 12px;
+  height: 100vh;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .panel {
-  background: #ffffff;
+  background: #0f172a;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  padding: 16px;
+  border: 1px solid #1e293b;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  padding: 14px;
+  box-sizing: border-box;
 }
 
-.photo-panel h1 {
-  margin-top: 0;
+.photo-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  gap: 8px;
+}
+
+.photo-panel h1,
+.photo-panel p {
+  margin: 0;
 }
 
 .photo-frame {
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  background: #e2e8f0;
+  background: #020617;
+  border: 1px solid #1e293b;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #round-photo {
   width: 100%;
-  border-radius: 8px;
-  object-fit: cover;
-  min-height: 300px;
-  background: #e2e8f0;
+  height: 100%;
+  object-fit: contain;
+  background: #020617;
   transform-origin: center;
-  transform: scale(2.4);
+  transform: scale(1);
 }
 
 .photo-controls {
-  margin-top: 12px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 6px;
+  gap: 4px;
 }
 
 .photo-controls label {
-  font-size: 0.9rem;
-  color: #334155;
+  font-size: 0.85rem;
+  color: #94a3b8;
 }
 
 .photo-controls input[type="range"] {
@@ -62,17 +82,21 @@ body {
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
 }
 
 button {
-  border: none;
+  border: 1px solid #334155;
   border-radius: 8px;
   padding: 10px 12px;
   cursor: pointer;
+  background: #1d4ed8;
+  color: #f8fafc;
+}
+
+button:hover:not(:disabled) {
   background: #2563eb;
-  color: #fff;
 }
 
 button:disabled {
@@ -81,30 +105,40 @@ button:disabled {
 }
 
 #result {
-  margin-top: 12px;
+  margin: 0;
   font-weight: 600;
+  color: #93c5fd;
 }
 
 .map-panel {
-  position: relative;
-}
-
-.open-map {
-  position: absolute;
-  z-index: 1000;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  margin: 0;
+  border-radius: 0;
+  padding: 64px 12px 12px;
+  background: #020617;
 }
 
 #map {
   width: 100%;
-  height: calc(100vh - 64px);
-  border-radius: 8px;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid #1e293b;
 }
 
-#map.hidden {
-  visibility: hidden;
-  pointer-events: none;
+.open-map,
+.close-map {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.close-map {
+  position: absolute;
+  top: 16px;
+  right: 12px;
+  z-index: 2100;
+}
+
+.hidden {
+  display: none;
 }

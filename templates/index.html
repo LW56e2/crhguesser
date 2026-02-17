@@ -17,7 +17,7 @@
         </div>
         <div class="photo-controls" aria-label="Photo framing controls">
           <label for="photo-zoom">Zoom</label>
-          <input id="photo-zoom" type="range" min="1.4" max="3.2" step="0.1" value="2.4" />
+          <input id="photo-zoom" type="range" min="1" max="3" step="0.1" value="1" />
 
           <label for="photo-pan-x">Pan X</label>
           <input id="photo-pan-x" type="range" min="0" max="100" step="1" value="50" />
@@ -26,13 +26,14 @@
           <input id="photo-pan-y" type="range" min="0" max="100" step="1" value="50" />
         </div>
         <div class="actions">
+          <button id="open-map" class="open-map">Open map to place guess</button>
           <button id="submit-guess" disabled>Submit guess</button>
           <button id="next-round">Next round</button>
         </div>
         <p id="result"></p>
       </section>
-      <section class="panel map-panel">
-        <button id="open-map" class="open-map">Open map to place guess</button>
+      <section class="panel map-panel hidden" id="map-panel" aria-hidden="true">
+        <button id="close-map" class="close-map">Close map</button>
         <div id="map"></div>
       </section>
     </main>
