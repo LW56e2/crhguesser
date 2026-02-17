@@ -15,7 +15,9 @@ const submitButton = document.getElementById("submit-guess");
 const nextRoundButton = document.getElementById("next-round");
 const roundPhoto = document.getElementById("round-photo");
 const mapNode = document.getElementById("map");
+const mapPanel = document.getElementById("map-panel");
 const openMapButton = document.getElementById("open-map");
+const closeMapButton = document.getElementById("close-map");
 const photoZoomInput = document.getElementById("photo-zoom");
 const photoPanXInput = document.getElementById("photo-pan-x");
 const photoPanYInput = document.getElementById("photo-pan-y");
@@ -30,13 +32,13 @@ function updatePhotoFraming() {
 }
 
 function hideMapUntilOpened() {
-  mapNode.classList.add("hidden");
-  openMapButton.hidden = false;
+  mapPanel.classList.add("hidden");
+  mapPanel.setAttribute("aria-hidden", "true");
 }
 
 function showMap() {
-  mapNode.classList.remove("hidden");
-  openMapButton.hidden = true;
+  mapPanel.classList.remove("hidden");
+  mapPanel.setAttribute("aria-hidden", "false");
   map.invalidateSize();
 }
 
@@ -125,6 +127,7 @@ async function submitGuess() {
 submitButton.addEventListener("click", submitGuess);
 nextRoundButton.addEventListener("click", loadRound);
 openMapButton.addEventListener("click", showMap);
+closeMapButton.addEventListener("click", hideMapUntilOpened);
 photoZoomInput.addEventListener("input", updatePhotoFraming);
 photoPanXInput.addEventListener("input", updatePhotoFraming);
 photoPanYInput.addEventListener("input", updatePhotoFraming);
