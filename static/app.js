@@ -4,13 +4,48 @@ let actualMarker = null;
 let selectedLatLng = null;
 let currentRound = null;
 
+const WALLINGFORD_CENTER = [41.457, -72.8232];
+const WALLINGFORD_BOUNDS = L.latLngBounds(
+  [41.41, -72.9],
+  [41.5, -72.75],
+);
+
 const resultNode = document.getElementById("result");
 const submitButton = document.getElementById("submit-guess");
 const nextRoundButton = document.getElementById("next-round");
 const roundPhoto = document.getElementById("round-photo");
+const mapNode = document.getElementById("map");
+const openMapButton = document.getElementById("open-map");
+const photoZoomInput = document.getElementById("photo-zoom");
+const photoPanXInput = document.getElementById("photo-pan-x");
+const photoPanYInput = document.getElementById("photo-pan-y");
+
+function updatePhotoFraming() {
+  const zoom = Number(photoZoomInput.value);
+  const panX = Number(photoPanXInput.value);
+  const panY = Number(photoPanYInput.value);
+
+  roundPhoto.style.transform = `scale(${zoom})`;
+  roundPhoto.style.objectPosition = `${panX}% ${panY}%`;
+}
+
+function hideMapUntilOpened() {
+  mapNode.classList.add("hidden");
+  openMapButton.hidden = false;
+}
+
+function showMap() {
+  mapNode.classList.remove("hidden");
+  openMapButton.hidden = true;
+  map.invalidateSize();
+}
 
 function initMap() {
-  map = L.map("map").setView([37.7749, -122.4194], 18);
+  map = L.map("map", {
+    minZoom: 13,
+    maxBounds: WALLINGFORD_BOUNDS,
+    maxBoundsViscosity: 1,
+  }).setView(WALLINGFORD_CENTER, 16);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 22,
@@ -37,6 +72,12 @@ async function loadRound() {
   resultNode.textContent = "";
   submitButton.disabled = true;
   selectedLatLng = null;
+  hideMapUntilOpened();
+
+  photoZoomInput.value = "2.4";
+  photoPanXInput.value = "50";
+  photoPanYInput.value = "50";
+  updatePhotoFraming();
 
   if (guessMarker) {
     map.removeLayer(guessMarker);
@@ -46,6 +87,8 @@ async function loadRound() {
     map.removeLayer(actualMarker);
     actualMarker = null;
   }
+
+  map.fitBounds(WALLINGFORD_BOUNDS, { animate: false });
 }
 
 async function submitGuess() {
@@ -81,6 +124,10 @@ async function submitGuess() {
 
 submitButton.addEventListener("click", submitGuess);
 nextRoundButton.addEventListener("click", loadRound);
+openMapButton.addEventListener("click", showMap);
+photoZoomInput.addEventListener("input", updatePhotoFraming);
+photoPanXInput.addEventListener("input", updatePhotoFraming);
+photoPanYInput.addEventListener("input", updatePhotoFraming);
 
 initMap();
 loadRound();
