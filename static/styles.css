@@ -10,8 +10,7 @@ body {
 
 .layout {
   display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 16px;
+  grid-template-columns: 1fr;
   padding: 16px;
   min-height: 100vh;
   box-sizing: border-box;
@@ -24,6 +23,12 @@ body {
   padding: 16px;
 }
 
+.photo-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 32px);
+}
+
 .photo-panel h1 {
   margin-top: 0;
 }
@@ -32,13 +37,15 @@ body {
   border-radius: 8px;
   overflow: hidden;
   background: #e2e8f0;
+  flex: 1;
+  min-height: 0;
 }
 
 #round-photo {
   width: 100%;
+  height: 100%;
   border-radius: 8px;
   object-fit: cover;
-  min-height: 300px;
   background: #e2e8f0;
   transform-origin: center;
   transform: scale(2.4);
@@ -62,6 +69,7 @@ body {
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-top: 12px;
 }
@@ -86,25 +94,32 @@ button:disabled {
 }
 
 .map-panel {
-  position: relative;
-}
-
-.open-map {
-  position: absolute;
-  z-index: 1000;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  margin: 0;
+  border-radius: 0;
+  padding-top: 64px;
 }
 
 #map {
   width: 100%;
-  height: calc(100vh - 64px);
+  height: 100%;
   border-radius: 8px;
 }
 
-#map.hidden {
-  visibility: hidden;
-  pointer-events: none;
+.open-map,
+.close-map {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.close-map {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2100;
+}
+
+.hidden {
+  display: none;
 }
